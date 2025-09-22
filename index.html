@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checklist Kunjungan Rumah - Usia Sekolah/Remaja</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .checkbox-group input[type="checkbox"] {
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #d1d5db;
+            border-radius: 4px;
+            position: relative;
+            cursor: pointer;
+        }
+        .checkbox-group input[type="checkbox"]:checked {
+            background-color: #10b981;
+            border-color: #10b981;
+        }
+        .checkbox-group input[type="checkbox"]:checked::after {
+            content: '✓';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        .radio-group input[type="radio"] {
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border: 2px solid #d1d5db;
+            border-radius: 50%;
+            position: relative;
+            cursor: pointer;
+        }
+        .radio-group input[type="radio"]:checked {
+            border-color: #3b82f6;
+        }
+        .radio-group input[type="radio"]:checked::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 8px;
+            height: 8px;
+            background-color: #3b82f6;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen py-8">
+    <div class="max-w-4xl mx-auto px-4">
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+            <div class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white p-6">
+                <h1 class="text-2xl font-bold text-center">CHECKLIST KUNJUNGAN RUMAH</h1>
+                <p class="text-center text-blue-100 mt-2">USIA SEKOLAH / REMAJA (≥ 6 - <18 Tahun)</p>
+                <p class="text-sm text-blue-100 mt-2 text-center">Berikan tanda centang (√) jika YA dan tanda silang (X) jika TIDAK</p>
+            </div>
+
+            <form id="healthForm" class="p-6 space-y-6">
+                <!-- Data Pribadi -->
+                <div class="bg-gray-50 p-4 rounded-lg">
+                    <h2 class="text-lg font-semibold text-gray-800 mb-4">Data Pribadi</h2>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Nama Lengkap</label>
+                            <input type="text" name="nama_lengkap" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Tanggal Lahir</label>
+                            <input type="date" name="tanggal_lahir" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Jenis Kelamin</label>
+                            <div class="radio-group flex gap-4">
+                                <label class="flex items-center gap-2">
+                                    <input type="radio" name="jenis_kelamin" value="Laki-laki" required>
+                                    <span>Laki-laki</span>
+                                </label>
+                                <label class="flex items-center gap-2">
+                                    <input type="radio" name="jenis_kelamin" value="Perempuan" required>
+                                    <span>Perempuan</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Riwayat Penyakit -->
+                <div class="bg-gray-50 p-4 rounded-lg">
+                    <h2 class="text-lg font-semibold text-gray-800 mb-4">Riwayat Penyakit</h2>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Riwayat Penyakit Keluarga</label>
+                            <div class="checkbox-group grid md:grid-cols-3 gap-2">
+                                <label class="flex items-center gap-2"><input type="checkbox" name="riwayat_keluarga" value="Hipertensi"><span>Hipertensi</span></label>
+                                <label class="flex items-center gap-2"><input type="checkbox" name="riwayat_keluarga" value="Diabetes Mellitus"><span>Diabetes Mellitus</span></label>
+                                <label class="flex items-center gap-2"><input type="checkbox" name="riwayat_keluarga" value="Stroke"><span>Stroke</span></label>
+                                <label class="flex items-center gap-2"><input type="checkbox" name="riwayat_keluarga" value="Jantung"><span>Jantung</span></label>
+                                <label class="flex items-center gap-2"><input type="checkbox" name="riwayat_keluarga" value="Asma"><span>Asma</span></label>
+                                <label class="flex items-center gap-2"><input type="checkbox" name="riwayat_keluarga" value="Kolesterol Tinggi"><span>Kolesterol Tinggi</span></label>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Riwayat Penyakit Pribadi</label>
+                            <div class="checkbox-group grid md:grid-cols-3 gap-2">
+                                <label class="flex items-center gap-2"><input type="checkbox" name="riwayat_pribadi" value="Hipertensi"><span>Hipertensi</span></label>
+                                <label class="flex items-center gap-2"><input type="checkbox" name="riwayat_pribadi" value="Diabetes Mellitus"><span>Diabetes Mellitus</span></label>
+                                <label class="flex items-center gap-2"><input type="checkbox" name="riwayat_pribadi" value="Stroke"><span>Stroke</span></label>
+                                <label class="flex items-center gap-2"><input type="checkbox" name="riwayat_pribadi" value="Jantung"><span>Jantung</span></label>
+                                <label class="flex items-center gap-2"><input type="checkbox" name="riwayat_pribadi" value="Asma"><span>Asma</span></label>
+                                <label class="flex items-center gap-2"><input type="checkbox" name="riwayat_pribadi" value="Kolesterol Tinggi"><span>Kolesterol Tinggi</span></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kunjungan -->
+                <div class="bg-gray-50 p-4 rounded-lg">
+                    <h2 class="text-lg font-semibold text-gray-800 mb-4">Data Kunjungan</h2>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Waktu Kunjungan</label>
+                            <select name="waktu_kunjungan" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <option value="">Pilih Kunjungan</option>
+                                <option value="Kunjungan 1">Kunjungan 1</option>
+                                <option value="Kunjungan 2">Kunjungan 2</option>
+                                <option value="Kunjungan 3">Kunjungan 3</option>
+                                <option value="Kunjungan 4">Kunjungan 4</option>
+                                <option value="Kunjungan 5">Kunjungan 5</option>
+                                <option value="Kunjungan 6">Kunjungan 6</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Tanggal Kunjungan</label>
+                            <input type="date" name="tanggal_kunjungan" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skrining -->
+                <div class="bg-gray-50 p-4 rounded-lg">
+                    <h2 class="text-lg font-semibold text-gray-800 mb-4">Skrining Kesehatan</h2>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Skrining Demam</label>
+                            <div class="radio-group flex gap-4">
+                                <label class="flex items-center gap-2">
+                                    <input type="radio" name="skrining_demam" value="<37.5°C">
+                                    <span><37.5°C</span>
+                                </label>
+                                <label class="flex items-center gap-2">
+                                    <input type="radio" name="skrining_demam" value=">37.5°C">
+                                    <span>>37.5°C</span>
+                                </label>
+                            </div>
+                            <input type="text" name="riwayat_perjalanan" placeholder="Riwayat Perjalanan Luar Daerah" class="w-full mt-2 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+
+                        <!-- Skrining Status Gizi -->
+                        <div class="border-t pt-4">
+                            <h3 class="font-medium text-gray-800 mb-2">Riwayat Skrining Status Gizi (BB, TB, LP, LiLA)</h3>
+                            <div class="grid md:grid-cols-3 gap-2">
+                                <input type="date" name="gizi_tanggal" placeholder="Tanggal" class="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <input type="text" name="gizi_tempat" placeholder="Tempat" class="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <div class="radio-group flex gap-4">
+                                    <label class="flex items-center gap-2">
+                                        <input type="radio" name="gizi_hasil" value="Normal">
+                                        <span>Normal</span>
+                                    </label>
+                                    <label class="flex items-center gap-2">
+                                        <input type="radio" name="gizi_hasil" value="Tidak Normal">
+                                        <span>Tidak Normal</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Skrining Gigi dan Mulut -->
+                        <div class="border-t pt-4">
+                            <h3 class="font-medium text-gray-800 mb-2">Riwayat Skrining Gigi dan Mulut</h3>
+                            <div class="grid md:grid-cols-3 gap-2">
+                                <input type="date" name="gigi_tanggal" placeholder="Tanggal" class="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <input type="text" name="gigi_tempat" placeholder="Tempat" class="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <div class="radio-group flex gap-4">
+                                    <label class="flex items-center gap-2">
+                                        <input type="radio" name="gigi_hasil" value="Normal">
+                                        <span>Normal</span>
+                                    </label>
+                                    <label class="flex items-center gap-2">
+                                        <input type="radio" name="gigi_hasil" value="Tidak Normal">
+                                        <span>Tidak Normal</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Skrining Anemia -->
+                        <div class="border-t pt-4">
+                            <h3 class="font-medium text-gray-800 mb-2">Riwayat Skrining Anemia (Remaja Putri Kelas 7)</h3>
+                            <div class="grid md:grid-cols-3 gap-2">
+                                <input type="date" name="anemia_tanggal" placeholder="Tanggal" class="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <input type="text" name="anemia_tempat" placeholder="Tempat" class="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <div class="radio-group flex gap-4">
+                                    <label class="flex items-center gap-2">
+                                        <input type="radio" name="anemia_hasil" value="Normal">
+                                        <span>Normal</span>
+                                    </label>
+                                    <label class="flex items-center gap-2">
+                                        <input type="radio" name="anemia_hasil" value="Tidak Normal">
+                                        <span>Tidak Normal</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Imunisasi -->
+                <div class="bg-gray-50 p-4 rounded-lg">
+                    <h2 class="text-lg font-semibold text-gray-800 mb-4">Imunisasi</h2>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm font-medium">Campak (Kelas 1 SD)</span>
+                            <div class="radio-group flex gap-4">
+                                <label class="flex items-center gap-2">
+                                    <input type="radio" name="imunisasi_campak" value="Ya">
+                                    <span>Ya</span>
+                                </label>
+                                <label class="flex items-center gap-2">
+                                    <input type="radio" name="imunisasi_campak" value="Tidak">
+                                    <span>Tidak</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm font-medium">Rubela (Kelas 1 SD)</span>
+                            <div class="radio-group flex gap-4">
+                                <label class="flex items-center gap-2">
+                                    <input type="radio" name="imunisasi_rubela" value="Ya">
+                                    <span>Ya</span>
+                                </label>
+                                <label class="flex items-center gap-2">
+                                    <input type="radio" name="imunisasi_rubela" value="Tidak">
+                                    <span>Tidak</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm font-medium">Difteri Tetanus (DT) Kelas 1 SD</span>
+                            <div class="radio-group flex gap-4">
+                                <label class="flex items-center gap-2">
+                                    <input type="radio" name="imunisasi_dt" value="Ya">
+                                    <span>Ya</span>
+                                </label>
+                                <label class="flex items-center gap-2">
+                                    <input type="radio" name="imunisasi_dt" value="Tidak">
+                                    <span>Tidak</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm font-medium">Tetanus Difteri (Td) Kelas 2 dan 5</span>
+                            <div class="radio-group flex gap-4">
+                                <label class="flex items-center gap-2">
+                                    <input type="radio" name="imunisasi_td" value="Ya">
+                                    <span>Ya</span>
+                                </label>
+                                <label class="flex items-center gap-2">
+                                    <input type="radio" name="imunisasi_td" value="Tidak">
+                                    <span>Tidak</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Perilaku dan Edukasi -->
+                <div class="bg-gray-50 p-4 rounded-lg">
+                    <h2 class="text-lg font-semibold text-gray-800 mb-4">Perilaku dan Edukasi</h2>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Perilaku Merokok</label>
+                            <div class="radio-group flex gap-4">
+                                <label class="flex items-center gap-2">
+                                    <input type="radio" name="perilaku_merokok" value="Aktif">
+                                    <span>Aktif</span>
+                                </label>
+                                <label class="flex items-center gap-2">
+                                    <input type="radio" name="perilaku_merokok" value="Pasif">
+                                    <span>Pasif</span>
+                                </label>
+                                <label class="flex items-center gap-2">
+                                    <input type="radio" name="perilaku_merokok" value="Tidak">
+                                    <span>Tidak</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Isi Piringku (Keragaman Gizi)</label>
+                            <div class="radio-group flex gap-4">
+                                <label class="flex items-center gap-2">
+                                    <input type="radio" name="isi_piringku" value="Sesuai">
+                                    <span>Sesuai</span>
+                                </label>
+                                <label class="flex items-center gap-2">
+                                    <input type="radio" name="isi_piringku" value="Tidak Sesuai">
+                                    <span>Tidak Sesuai</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Pemberian Edukasi / Rujukan Nakes</label>
+                            <textarea name="edukasi_rujukan" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Catatan edukasi atau rujukan yang diberikan..."></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="text-center pt-6">
+                    <button type="submit" class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-8 py-3 rounded-lg font-semibold hover:from-blue-700 hover:to-indigo-700 transform hover:scale-105 transition-all duration-200 shadow-lg">
+                        Kirim Data ke Spreadsheet
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Status Message -->
+        <div id="statusMessage" class="mt-4 p-4 rounded-lg text-center hidden">
+        </div>
+
+        <!-- Instructions -->
+        <div class="mt-8 bg-white rounded-lg shadow-lg p-6">
+            <h2 class="text-xl font-bold text-gray-800 mb-4">📋 Petunjuk Penggunaan</h2>
+            <div class="space-y-3 text-sm text-gray-600">
+                <p><strong>1. Setup Google Apps Script:</strong></p>
+                <ul class="list-disc list-inside ml-4 space-y-1">
+                    <li>Buka <a href="https://script.google.com" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">Google Apps Script</a></li>
+                    <li>Buat project baru dan paste kode Apps Script yang disediakan</li>
+                    <li>Deploy sebagai web app dengan akses "Anyone"</li>
+                    <li>Copy URL deployment dan masukkan ke variabel SCRIPT_URL di bawah</li>
+                </ul>
+                
+                <p><strong>2. Setup Google Spreadsheet:</strong></p>
+                <ul class="list-disc list-inside ml-4 space-y-1">
+                    <li>Buat spreadsheet baru di Google Sheets</li>
+                    <li>Copy ID spreadsheet dari URL dan masukkan ke Apps Script</li>
+                    <li>Pastikan sheet bernama "Checklist Kunjungan"</li>
+                </ul>
+
+                <p><strong>3. Kode Apps Script:</strong></p>
+                <div class="bg-gray-100 p-4 rounded-lg mt-2 text-xs overflow-x-auto">
+                    <pre>function doPost(e) {
+  const sheet = SpreadsheetApp.openById('YOUR_SPREADSHEET_ID').getSheetByName('Checklist Kunjungan');
+  
+  if (!sheet) {
+    // Buat header jika sheet belum ada
+    const newSheet = SpreadsheetApp.openById('YOUR_SPREADSHEET_ID').insertSheet('Checklist Kunjungan');
+    const headers = [
+      'Timestamp', 'Nama Lengkap', 'Tanggal Lahir', 'Jenis Kelamin',
+      'Riwayat Penyakit Keluarga', 'Riwayat Penyakit Pribadi',
+      'Waktu Kunjungan', 'Tanggal Kunjungan', 'Skrining Demam',
+      'Riwayat Perjalanan', 'Status Gizi Tanggal', 'Status Gizi Tempat',
+      'Status Gizi Hasil', 'Gigi Tanggal', 'Gigi Tempat', 'Gigi Hasil',
+      'Anemia Tanggal', 'Anemia Tempat', 'Anemia Hasil',
+      'Imunisasi Campak', 'Imunisasi Rubela', 'Imunisasi DT', 'Imunisasi Td',
+      'Perilaku Merokok', 'Isi Piringku', 'Edukasi/Rujukan'
+    ];
+    newSheet.getRange(1, 1, 1, headers.length).setValues([headers]);
+    return ContentService.createTextOutput('Sheet created');
+  }
+  
+  const data = JSON.parse(e.postData.contents);
+  const row = [
+    new Date(),
+    data.nama_lengkap || '',
+    data.tanggal_lahir || '',
+    data.jenis_kelamin || '',
+    data.riwayat_keluarga || '',
+    data.riwayat_pribadi || '',
+    data.waktu_kunjungan || '',
+    data.tanggal_kunjungan || '',
+    data.skrining_demam || '',
+    data.riwayat_perjalanan || '',
+    data.gizi_tanggal || '',
+    data.gizi_tempat || '',
+    data.gizi_hasil || '',
+    data.gigi_tanggal || '',
+    data.gigi_tempat || '',
+    data.gigi_hasil || '',
+    data.anemia_tanggal || '',
+    data.anemia_tempat || '',
+    data.anemia_hasil || '',
+    data.imunisasi_campak || '',
+    data.imunisasi_rubela || '',
+    data.imunisasi_dt || '',
+    data.imunisasi_td || '',
+    data.perilaku_merokok || '',
+    data.isi_piringku || '',
+    data.edukasi_rujukan || ''
+  ];
+  
+  sheet.appendRow(row);
+  return ContentService.createTextOutput('Success');
+}</pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // URL Google Apps Script yang sudah dikonfigurasi
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbykiv5tqux5_Y7DkTuFOxxtYECSW72hPvN0MKtwjKjh4i-AtFVlO8tvwVUgIcUK4p8VaQ/exec';
+        
+        document.getElementById('healthForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const statusDiv = document.getElementById('statusMessage');
+            const submitBtn = e.target.querySelector('button[type="submit"]');
+            
+            // Show loading state
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Mengirim Data...';
+            statusDiv.className = 'mt-4 p-4 rounded-lg text-center bg-blue-100 text-blue-800';
+            statusDiv.textContent = 'Sedang mengirim data ke spreadsheet...';
+            statusDiv.classList.remove('hidden');
+            
+            // Collect form data
+            const formData = new FormData(e.target);
+            const data = {};
+            
+            // Handle all form fields including checkboxes
+            for (let [key, value] of formData.entries()) {
+                if (data[key]) {
+                    // Handle multiple values (checkboxes)
+                    if (Array.isArray(data[key])) {
+                        data[key].push(value);
+                    } else {
+                        data[key] = [data[key], value];
+                    }
+                } else {
+                    data[key] = value;
+                }
+            }
+            
+            // Convert arrays to strings for checkboxes
+            Object.keys(data).forEach(key => {
+                if (Array.isArray(data[key])) {
+                    data[key] = data[key].join(', ');
+                }
+            });
+            
+            // Send data using fetch with proper headers
+            fetch(SCRIPT_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            })
+            .then(() => {
+                // Success (no-cors mode doesn't return response)
+                statusDiv.className = 'mt-4 p-4 rounded-lg text-center bg-green-100 text-green-800';
+                statusDiv.textContent = '✅ Data berhasil dikirim ke spreadsheet!';
+                document.getElementById('healthForm').reset();
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Kirim Data ke Spreadsheet';
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                statusDiv.className = 'mt-4 p-4 rounded-lg text-center bg-red-100 text-red-800';
+                statusDiv.textContent = '❌ Gagal mengirim data. Periksa koneksi internet Anda.';
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Kirim Data ke Spreadsheet';
+            });
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9817e6c5d7519fcd',t:'MTc1ODI3MjUxOC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
